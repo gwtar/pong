@@ -19,27 +19,35 @@ typedef struct
 
 typedef struct
 {
+    int posx;
+    int posy;
     int sizex;
     int sizey;
-    int speed;
     Color color;
+    int centery;
 } player;
 
-void init(ball *ball)
+void init(ball *ball, player *player)
 {
 
     ball->posx = WINDOW_WIDTH / 2;
     ball->posy = WINDOW_HEIGHT / 2;
-    ball->speedx = 10;
+    ball->speedx = 11;
     ball->speedy = 10;
     ball->radius = 5;
     ball->color = WHITE;
     ball->center = ball->radius / 2;
+
+    player->posx = 0;
+    player->posy = 0;
+    player->sizex = 10;
+    player->sizey = 100;
+    player->color = WHITE;
+    player->centery = player->sizey / 2;
 }
 
-void logic(ball *ball)
+void logic(ball *ball, player *player)
 {
-    /*
     if(ball->posx >= WINDOW_WIDTH - ball->center)
     {
         ball->posx = WINDOW_WIDTH - ball->center;
@@ -50,7 +58,6 @@ void logic(ball *ball)
         ball->posx = 0 + ball->center;
         ball->speedx *= -1;
     }
-    */
 
     if(ball->posy >= WINDOW_HEIGHT - ball->center)
     {
@@ -65,14 +72,27 @@ void logic(ball *ball)
 
     ball->posx += ball->speedx;
     ball->posy += ball->speedy;
+
+    player->posy = GetMouseY() - player->centery;
+
+    if(player->posy > WINDOW_HEIGHT - player->sizey)
+    {
+        player->posy = WINDOW_HEIGHT - player->sizey;
+    }
+
+    if(player->posy < 0)
+    {
+        player->posy = 0;
+    }
 }
 
-void draw(ball ball)
+void draw(ball ball, player player)
 {
     BeginDrawing();
     ClearBackground(BLACK);
 
     DrawCircle(ball.posx, ball.posy, ball.radius, ball.color);
+    DrawRectangle(player.posx, player.posy, player.sizex, player.sizey, player.color);
 
     EndDrawing();
 }
@@ -83,13 +103,14 @@ int main()
     SetTargetFPS(WINDOW_MAX_FPS);
 
     ball ball;
+    player player;
 
-    init(&ball);
+    init(&ball, &player);
 
     while(!WindowShouldClose())
     {
-        logic(&ball);
-        draw(ball);
+        logic(&ball, &player);
+        draw(ball, player);
     }
 
     CloseWindow();
