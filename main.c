@@ -14,7 +14,6 @@ typedef struct
     int speedy;
     int radius;
     Color color;
-    int center;
 } ball;
 
 typedef struct
@@ -24,7 +23,6 @@ typedef struct
     int sizex;
     int sizey;
     Color color;
-    int centery;
 } player;
 
 void init(ball *ball, player *player)
@@ -36,21 +34,19 @@ void init(ball *ball, player *player)
     ball->speedy = 10;
     ball->radius = 5;
     ball->color = WHITE;
-    ball->center = ball->radius / 2;
 
     player->posx = 0;
     player->posy = 0;
     player->sizex = 10;
     player->sizey = 100;
     player->color = WHITE;
-    player->centery = player->sizey / 2;
 }
 
 void logic(ball *ball, player *player)
 {
-    if(ball->posx >= WINDOW_WIDTH - ball->center)
+    if(ball->posx > WINDOW_WIDTH)
     {
-        ball->posx = WINDOW_WIDTH - ball->center;
+        ball->posx = WINDOW_WIDTH;
         ball->speedx *= -1;
     }
     if(ball->posx <= 0 + ball->center)
