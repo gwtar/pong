@@ -5,8 +5,8 @@ void init(ball *ball, player *player)
 {
     ball->posx = WINDOW_WIDTH / 2;
     ball->posy = WINDOW_HEIGHT / 2;
-    ball->speedx = 100;
-    ball->speedy = 100;
+    ball->speedx = 10;
+    ball->speedy = 10;
     ball->radius = 5;
     ball->color = WHITE;
 

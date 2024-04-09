@@ -1,7 +1,7 @@
 #ifndef BALL_H
 #define BALL_H
 
-#include </usr/local/include/raylib.h>
+#include <raylib.h>
 
 typedef struct ball
 {
