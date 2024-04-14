@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <raylib.h>
 
+#include "window.h"
 #include "ball.h"
 #include "player.h"
-#include "window.h"
+
 #include "init.h"
 #include "logic.h"
 #include "draw.h"
-
 
 int main()
 {

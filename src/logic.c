@@ -4,11 +4,6 @@
 
 void logic(ball *ball, player *player)
 {
-    ball->posx += ball->speedx;
-    ball->posy += ball->speedy;
-
-    player->posy = GetMouseY() - player->height / 2;
-
     if(ball->posx + ball->radius > WINDOW_WIDTH)
     {
         ball->posx = WINDOW_WIDTH - ball->radius;
@@ -39,4 +34,9 @@ void logic(ball *ball, player *player)
     {
         player->posy = 0;
     }
+
+    ball->posx += ball->speedx;
+    ball->posy += ball->speedy;
+
+    player->posy = GetMouseY() - player->height / 2;
 }

@@ -10,4 +10,7 @@ $(OBJ): $(SRC)
 	$(CC) $(SRC) -c
 
 clean:
-	rm $(OBJ) output
+	rm $(OBJ)
+
+uninstall:
+	rm output
