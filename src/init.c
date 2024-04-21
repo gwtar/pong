@@ -1,6 +1,8 @@
 #include "init.h"
 #include "window.h"
 
+#include <raylib.h>
+
 void init(ball *ball, player *player)
 {
     ball->posx = WINDOW_WIDTH / 2;

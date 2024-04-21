@@ -1,5 +1,7 @@
 #include "draw.h"
 
+#include "raylib.h"
+
 void draw(ball ball, player player)
 {
     BeginDrawing();
